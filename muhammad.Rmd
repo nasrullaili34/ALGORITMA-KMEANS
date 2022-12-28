@@ -1,6 +1,6 @@
 ---
-title: ALGORITMA K MEANS
-author: MUHAMMAD TAHIR NASRUL LAILI
+title: Algaritma k means
+author: muhammad tahir nasrul laili
 date: "`r Sys.Date()`"
 output:
   prettydoc::html_pretty:
