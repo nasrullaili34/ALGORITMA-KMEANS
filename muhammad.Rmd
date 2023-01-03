@@ -1,6 +1,6 @@
 ---
-title: Algaritma k means
-author: muhammad tahir nasrul laili
+title: Algaritma K-Means
+author: muhammad tahir nasrul laili - institut teknologi statitiska dan bisnis muhammadiyah
 date: "`r Sys.Date()`"
 output:
   prettydoc::html_pretty:
@@ -8,7 +8,7 @@ output:
     highlight: github
 bibliography: references.bib
 ---
-
+ 
 ```{=html}
 <style>
 body{
@@ -18,25 +18,17 @@ text-align: justify}
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+# Algoritma K-Means
 
-# R Markdown
+Algoritma K-Means merupakan salah satu metode pengelompokan data non-hirarki yang berusaha mempartisi data yang ada ke dalam bentuk dua atau lebih cluster. Metode ini mempartisi data ke dalam cluster sehingga data berkarakteristik sama dimasukkan ke dalam satu cluster yang sama dan data yang berkarakteristik berbeda dikelompokkan ke dalam cluster yang lain. Adapun tujuan pengelompokan data ini adalah untuk meminimalkan fungsi objektif yang diatur dalam proses pengelompokan, yang pada umumnya berusaha meminimalkan variasi di dalam suatu cluster dan memaksimalkan variasi antar cluster. (Supranto, 2004)
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents [@deCarvalho2012]. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+K-Means menggunakan “mean” yaitu rata-rata sebagai pusat cluster-nya, sehingga K-Means tidak robust atau tidak cukup baik terhadap data yang memiliki outlier. Sehingga, untuk mengatasi hal tersebut dapat digunakan metode K-Medoids untuk mengelompokkan data yang memiliki outlier. (Larasati, 2017)
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+# Tahapan Algoritma K-Means
 
-```{r cars}
-summary(cars)
-```
+# Eksperrimen Algoritma K-Means
 
-## Including Plots
 
-You can also embed plots, for example:
 
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
 
-# Referensi
