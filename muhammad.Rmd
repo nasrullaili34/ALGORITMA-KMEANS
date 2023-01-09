@@ -1,6 +1,6 @@
 ---
 title: Algaritma K-Means
-author: muhammad tahir nasrul laili - institut teknologi statitiska dan bisnis muhammadiyah
+author: Muhammad Tahir Nasrul Laili - institut teknologi statitiska dan bisnis muhammadiyah
 date: "`r Sys.Date()`"
 output:
   prettydoc::html_pretty:
@@ -20,15 +20,90 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 # Algoritma K-Means
 
-Algoritma K-Means merupakan salah satu metode pengelompokan data non-hirarki yang berusaha mempartisi data yang ada ke dalam bentuk dua atau lebih cluster. Metode ini mempartisi data ke dalam cluster sehingga data berkarakteristik sama dimasukkan ke dalam satu cluster yang sama dan data yang berkarakteristik berbeda dikelompokkan ke dalam cluster yang lain. Adapun tujuan pengelompokan data ini adalah untuk meminimalkan fungsi objektif yang diatur dalam proses pengelompokan, yang pada umumnya berusaha meminimalkan variasi di dalam suatu cluster dan memaksimalkan variasi antar cluster. (Supranto, 2004)
+Clustering adalah teknik eksplorasi data yang digunakan untuk menemukan grup atau pola dalam himpunan data. Ada dua strategi pengelompokan standar: metode partisi dan pengelompokan hierarkis.Algoritma partisi yang paling terkenal dan umum digunakan termasuk: K-means clustering (MacQueen, 1967), di mana, setiap cluster diwakili oleh pusat atau sarana titik data milik cluster.
 
-K-Means menggunakan “mean” yaitu rata-rata sebagai pusat cluster-nya, sehingga K-Means tidak robust atau tidak cukup baik terhadap data yang memiliki outlier. Sehingga, untuk mengatasi hal tersebut dapat digunakan metode K-Medoids untuk mengelompokkan data yang memiliki outlier. (Larasati, 2017)
+Ada beberapa pendekatan yang digunakan dalam mengembangkan metode clustering. Dua pendekatan utama adalah clustering dengan pendekatan partisi dan clustering dengan pendekatan hirarki. Clustering dengan pendekatan partisi atau sering disebut dengan partition-based clustering mengelompokkan data dengan memilah-milah data yang dianalisa ke dalam cluster-cluster yang ada. 
+Clustering dengan pendekatan hirarki atau sering disebut dengan hierarchical clustering mengelompokkan data dengan membuat suatu hirarki berupa dendogram dimana data yang mirip akan ditempatkan pada hirarki yang berdekatan dan yang tidak pada hirarki yang berjauhan. Di samping kedua pendekatan tersebut, ada juga clustering dengan pendekatan automatic mapping (Self-Organising Map/SOM).
+
+K-means merupakan salah satu pengelompokan data nonhierarki (sekatan) yang berusaha mempartisi data yang ada ke dalam bentuk dua atau lebih kelompok.
+Tujuan pengelompokan data ini adalah meminimalkan fungsi objektif yang diset dalam proses pengelompokan, yang berusaha meminimalkan variasi di dalam suatu kelompok dan memaksimalkan variasi antarkelompok.
+
+Metode K-Means berusaha mengelompokkan data yang ada ke dalam beberapa kelompok, dimana data dalam satu kelompok mempunyai karakteristik yang sama satu sama lainnya dan mempunyai karakteristik yang berbeda dengan data yang ada di dalam kelompok yang lain.
 
 # Tahapan Algoritma K-Means
 
+1. Menyiapkan data.
+
+2. Statistika dasar sebelum menerapkan K-Means.
+
+3. Komputasikan k-means.
+
+4. Visualisasikan.
+
 # Eksperrimen Algoritma K-Means
 
+## Library
+
+1. Menyiapkan data
+
+```{r}
+data("mtcars")
+mtcars <- na.omit(mtcars)
+
+head(mtcars)
+```
+
+2. Statistika dasar sebelum menerapkan K-Means
+
+```{r}
+desc_stats <- data.frame(
+  Min = apply(mtcars, 2, min), # minimum
+  Med = apply(mtcars, 2, median), # median
+  Mean = apply(mtcars, 2, mean), # mean
+  SD = apply(mtcars, 2, sd), # Standard deviation
+  Max = apply(mtcars, 2, max) # Maximum
+  )
+desc_stats <- round(desc_stats, 1)
+head(desc_stats)
+```
+
+```{r}
+df <- scale(mtcars)
+head(df)
+```
+
+3. Komputasikan k-means
+
+```{r}
+set.seed(123)
+km.res <- kmeans(scale(mtcars), 4, nstart = 25)
+km.res
+```
+
+```{r}
+# It’s possible to compute the mean of each of the variables in the clusters:
+aggregate(mtcars, by=list(cluster=km.res$cluster), mean)
+```
+
+4.  Visualisasikan
+
+```{r}
+library("factoextra")
+```
+
+```{r}
+fviz_cluster(km.res, data = df,
+             palette = c("#00AFBB","#2E9FDF", "#E7B800", "#FC4E07"),
+             ggtheme = theme_minimal(),
+             main = "Partitioning Clustering Plot"
+             )
+```
 
 
+# Referensi
 
+https://rpubs.com/JanpuHou/278558
 
+https://medium.com/@16611094/clustering-menggunakan-metode-k-means-cluster-di-r-80827b4a48fd
+
+https://medium.com/@salsabillanovia/k-means-clustering-mtcars-dataset-with-r-e6ee485ecdad
