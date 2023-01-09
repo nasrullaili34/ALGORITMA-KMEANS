@@ -1,6 +1,6 @@
 ---
 title: Algaritma K-Means
-author: Muhammad Tahir Nasrul Laili - institut teknologi statitiska dan bisnis muhammadiyah
+author: muhammad tahir nasrul laili - institut teknologi statitiska dan bisnis muhammadiyah
 date: "`r Sys.Date()`"
 output:
   prettydoc::html_pretty:
