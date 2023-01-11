@@ -3,9 +3,12 @@ title: Algaritma K-Means
 author: muhammad tahir nasrul laili - institut teknologi statitiska dan bisnis muhammadiyah
 date: "`r Sys.Date()`"
 output:
-  prettydoc::html_pretty:
-    theme: architect
-    highlight: github
+ rmdformats::readthedown:
+    self_contained: true
+    thumbnails: true
+    lightbox: true
+    gallery: false
+    highlight: tango
 bibliography: references.bib
 ---
  
@@ -19,6 +22,8 @@ text-align: justify}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 # Algoritma K-Means
+
+## Pengertian Algoritma K Means.
 
 Clustering adalah teknik eksplorasi data yang digunakan untuk menemukan grup atau pola dalam himpunan data. Ada dua strategi pengelompokan standar: metode partisi dan pengelompokan hierarkis.Algoritma partisi yang paling terkenal dan umum digunakan termasuk: K-means clustering (MacQueen, 1967), di mana, setiap cluster diwakili oleh pusat atau sarana titik data milik cluster.
 
