@@ -3,12 +3,13 @@ title: Algaritma K-Means
 author: muhammad tahir nasrul laili - institut teknologi statitiska dan bisnis muhammadiyah
 date: "`r Sys.Date()`"
 output:
- rmdformats::readthedown:
-    self_contained: true
-    thumbnails: true
-    lightbox: true
-    gallery: false
-    highlight: tango
+  html_document:
+    theme: flatly
+    higlight: zenburn
+    toc: true
+    toc_float:
+      collapsed: true
+    df_print: paged
 bibliography: references.bib
 ---
  
@@ -24,6 +25,8 @@ knitr::opts_chunk$set(echo = TRUE)
 # Algoritma K-Means
 
 ## Pengertian Algoritma K Means.
+
+K-Means untuk analisis data kejahatan
 
 Clustering adalah teknik eksplorasi data yang digunakan untuk menemukan grup atau pola dalam himpunan data. Ada dua strategi pengelompokan standar: metode partisi dan pengelompokan hierarkis.Algoritma partisi yang paling terkenal dan umum digunakan termasuk: K-means clustering (MacQueen, 1967), di mana, setiap cluster diwakili oleh pusat atau sarana titik data milik cluster.
 
@@ -51,6 +54,8 @@ Metode K-Means berusaha mengelompokkan data yang ada ke dalam beberapa kelompok,
 
 1. Menyiapkan data
 
+Untuk penerapan k-means menggunakan R, disini menggunakan dataset yang sudah tersedia di R yaitu mtcars dataset.
+
 ```{r}
 data("mtcars")
 mtcars <- na.omit(mtcars)
@@ -59,6 +64,8 @@ head(mtcars)
 ```
 
 2. Statistika dasar sebelum menerapkan K-Means
+
+Perhatikan bahwa variabel memiliki cara dan varians yang berbeda besar. Karena kita tidak ingin algoritma k-means bergantung pada unit variabel arbitrer, kita akan menskalakan data menggunakan skala fungsi R(), sebelum kita dapat menerapkan K-means.
 
 ```{r}
 desc_stats <- data.frame(
@@ -92,6 +99,8 @@ aggregate(mtcars, by=list(cluster=km.res$cluster), mean)
 
 4.  Visualisasikan
 
+Pengamatan diwakili oleh titik-titik dalam plot, menggunakan komponen utama jika ncol(data) > 2. Elips digambar di sekitar setiap cluster.
+
 ```{r}
 library("factoextra")
 ```
@@ -105,9 +114,12 @@ fviz_cluster(km.res, data = df,
 ```
 
 
+
 # Referensi
 
-https://rpubs.com/JanpuHou/278558
+1).https://rpubs.com/JanpuHou/278558
+
+2).https://github.com/nasrullaili34/ALGORITMA-KMEANS
 
 https://medium.com/@16611094/clustering-menggunakan-metode-k-means-cluster-di-r-80827b4a48fd
 
